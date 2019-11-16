@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gupaoedu.mapper.OrderHistoryMapper">
+  <resultMap id="BaseResultMap" type="com.gupaoedu.entity.OrderHistory">
+    <id column="order_history_id" jdbcType="BIGINT" property="orderHistoryId" />
+    <result column="name1" jdbcType="VARCHAR" property="name" />
+    <result column="money" jdbcType="VARCHAR" property="money" />
+    <result column="month1" jdbcType="VARCHAR" property="month" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+    order_history_id, name1, money, month1
+  </sql>
+
+  <insert id="insert" useGeneratedKeys="true" keyProperty="orderHistoryId" parameterType="com.gupaoedu.entity.OrderHistory">
+    insert into order_history (name1, money, month1)
+    values ( #{name,jdbcType=VARCHAR}, #{money,jdbcType=VARCHAR}, #{month,jdbcType=VARCHAR} )
+  </insert>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from order_history where order_history_id = #{id,jdbcType=BIGINT}
+  </select>
+
+</mapper>
