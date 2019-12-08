@@ -1,7 +1,7 @@
 package study.pattern.singleton.lazy;
 
 public class LazyDoubleCheckSingleton {
-    private static LazyDoubleCheckSingleton lazyDoubleCheckSingleton = null;
+    private volatile static LazyDoubleCheckSingleton lazyDoubleCheckSingleton = null;
 
     private LazyDoubleCheckSingleton() {
     }
